@@ -6,17 +6,7 @@ pub fn part1() -> std::io::Result<()> {
     for bank in content.lines() {
         answer += find_largest_joltage_1(bank);
     }
-    println!("Solution for day 3 part 1:: {answer}");
-    Ok(())
-}
-
-pub fn part2() -> std::io::Result<()> {
-    let content = fs::read_to_string("data/day03.txt")?;
-    let mut answer = 0;
-    for bank in content.lines() {
-        answer += find_largest_joltage_2(bank);
-    }
-    println!("Solution for day 3 part 2:: {answer}");
+    println!("Solution for day 3 part 1: {answer}");
     Ok(())
 }
 
@@ -44,6 +34,16 @@ fn find_largest_joltage_1(bank: &str) -> u32 {
     // println!("Largest after: {largest_after}");
 
     largest*10+largest_after
+}
+
+pub fn part2() -> std::io::Result<()> {
+    let content = fs::read_to_string("data/day03.txt")?;
+    let mut answer = 0;
+    for bank in content.lines() {
+        answer += find_largest_joltage_2(bank);
+    }
+    println!("Solution for day 3 part 2: {answer}");
+    Ok(())
 }
 
 fn find_largest_joltage_2(bank: &str) -> u64 {
