@@ -25,7 +25,7 @@ fn find_largest_joltage_1(bank: &str) -> u32 {
 
     // 2. Find largest n AFTER largest number's index: O(n)
     let mut largest_after = 0;
-    for (i, battery) in bank[largest_i+1..].chars().enumerate() {
+    for (_i, battery) in bank[largest_i+1..].chars().enumerate() {
         let n = battery.to_digit(10).expect("Error converting to number");
         if n > largest_after {
             largest_after = n;
