@@ -27,10 +27,36 @@ pub fn part1() -> std::io::Result<()> {
 }
 
 pub fn part2() -> std::io::Result<()> {
-    let content = fs::read_to_string("data/day07_control.txt")?;
-    for (i, line) in content.lines().enumerate() {
+    let content = fs::read_to_string("data/day07.txt")?;
+    let grid: Vec<Vec<char>> = content.lines().map(|l| l.chars().collect()).collect();
+
+    let cols = grid[0].len();
+    let mut counts: Vec<u64> = vec![0; cols];
+
+    for col in 0..cols {
+        if grid[0][col] == 'S' {
+            counts[col] = 1;
+        }
     }
 
-    println!("Solution for day 7 part 2: ");
+    for row in 1..grid.len() {
+        let mut new_counts: Vec<u64> = vec![0; cols];
+        for col in 0..cols {
+            if counts[col] > 0 {
+                match grid[row][col] {
+                    '.' => new_counts[col] += counts[col],
+                    '^' => {
+                        new_counts[col - 1] += counts[col];
+                        new_counts[col + 1] += counts[col];
+                    }
+                    _ => {}
+                }
+            }
+        }
+        counts = new_counts;
+    }
+
+    let total: u64 = counts.iter().sum();
+    println!("Solution for day 7 part 2: {total}");
     Ok(())
 }
