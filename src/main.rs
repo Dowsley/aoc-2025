@@ -15,4 +15,6 @@ fn main() {
     days::day06::part2().expect("Error on day 6 part 2");
     days::day07::part1().expect("Error on day 7 part 1");
     days::day07::part2().expect("Error on day 7 part 2");
+    days::day08::part1().expect("Error on day 8 part 1");
+    days::day08::part2().expect("Error on day 8 part 2");
 }
